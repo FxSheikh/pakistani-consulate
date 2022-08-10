@@ -1,0 +1,15 @@
+
+  .give-margin {
+    margin-top: 55px;   
+  }
+
+  .errors {
+    color: red;
+  }
+  
+  .register-errors {
+    color: red;
+    text-align: center;
+    margin-top: -20px;
+  }
+  

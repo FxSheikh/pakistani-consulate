@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% block title %}Application Form{% endblock %}
+        
+{% block content %}
+        <main>
+        {% include '_flashmessages.html' %}
+
+        <div class="section"></div>
+        <div class="container z-depth-1">
+        <ul class="tabs">
+        <li class="tab col s3"><a class="active" target="_self" href="{{url_for('dl_application')}}"><strong>Enter details</strong></a></li>
+        <li class="tab col s3 disabled"><a target="_self" href="#">Upload Files</a></li>
+        <li class="tab col s3 disabled"><a href="#">Payment</a></li>
+      </ul>
+
+      <div class="divider">
+      </div>
+
+       
+        <div class="center-box z-depth-2 hoverable z-depth-1 grey lighten-4">
+                <h4 class="center">Application for Authentication of Pakistan Driving License</h4>
+
+
+             
+            {% from "_formhelpers.html" import render_row %}
+            {% from "_formhelpers.html" import render_field %}
+            {% from "_formhelpers.html" import render_double_row %}
+            {% from "_formhelpers.html" import render_date_row %}
+            {% from "_formhelpers.html" import render_datefield_row %}
+
+            
+            <form class="col s12" method="post" action="{{ url_for('dl_application') }}" role="form">
+                
+                {{ form.hidden_tag() }}
+                
+                {{ render_double_row(form.first_name, form.middle_name) }}
+                
+                {{ render_double_row(form.last_name, form.fathers_name) }} 
+
+                  <div class="row">
+                {{ render_field(form.date_of_birth, "s12 m6", class="datepicker")}}
+                {{ render_field(form.place_of_birth, "s12 m6", class="validate")}}
+
+                </div>
+
+                <h4>Pakistani Address</h4>
+                <div class="row">
+                {{ render_field(form.pak_house_number, "s12 m3", class="validate")}}
+                {{ render_field(form.pak_street, "s12 m9", class="validate")}}
+
+                </div>
+
+                 <div class="row">
+                {{ render_field(form.pak_suburb, "s12 m3", class="validate")}}
+                {{ render_field(form.pak_zipcode, "s12 m6", class="validate")}}
+                {{ render_field(form.pak_state, "s12 m3", class="validate")}}
+
+
+                </div>
+
+
+                <h4>Australian Address</h4>
+
+                  <div class="row">
+                {{ render_field(form.aus_house_number, "s12 m3", class="validate")}}
+                {{ render_field(form.aus_street, "s12 m9", class="validate")}}
+
+                </div>
+
+                  <div class="row">
+                {{ render_field(form.aus_suburb, "s12 m3", class="validate")}}
+                {{ render_field(form.aus_zipcode, "s12 m6", class="validate")}}
+                {{ render_field(form.aus_state, "s12 m3", class="validate")}}
+
+                </div>
+
+                
+                <div class="divider"></div>
+                <div class="section"></div>
+
+                {{ render_double_row(form.phone_number, form.email) }} 
+                
+                {{ render_row(form.aus_license_number, "s12 m12") }}
+                 
+                {{ render_double_row(form.pak_license_number, form.license_issuing_authority) }}                
+            
+               
+                <div class="row">
+                {{ render_field(form.pak_license_issue_date, "s12 m6", class="datepicker")}}
+                {{ render_field(form.expiry_date_pakdl, "s12 m6", class="datepicker")}}
+
+                </div>
+                
+                {{ render_row(form.passport_number, "s12 m12") }}
+
+                {{ render_row(form.cnic_number, "s12 m12") }}
+
+                <div class="row center">
+                    <button class="btn waves-effect waves-light" type="submit" name="nextbutton">Next</button>
+                </div>
+                <div class="section"></div>
+                {%if error %}
+                    <div class="errors">{{ error }}</div>
+                {% endif %}
+                
+            </form>
+            
+         </div>
+
+         </div>
+         <div class="section"></div>
+
+         </main>
+
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+ 
+    <script type="text/javascript" src="{{ url_for('static', filename='js/datepicker.js') }}"></script>
+
+    
+    <script>
+    /* global $ */
+   
+    $(document).ready(function(){
+        
+        $('input').bind('input',function(){ 
+            $(this).siblings( ".errors" ).remove();
+        });
+        
+        // $('input').focusin(function() {
+        //   $(this).siblings( ".errors" ).remove();
+        // });
+        
+        $('.datepicker').focusin(function() {
+          $(this).siblings( ".errors" ).remove();
+        });
+        
+    });
+    
+    </script>
+{% endblock %}
+
+

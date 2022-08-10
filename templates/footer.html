@@ -1,0 +1,39 @@
+{% block content %}
+<footer class="page-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">Pakistani Consulate Verification System</h5>
+        <p class="grey-text text-lighten-4">
+         {% if session.firstname %}
+         Logged in as {{session.firstname}}
+         {% else %}
+         You have not logged in yet. You must log in to begin your application.
+         {% endif %}  
+
+       </p>
+     </div>
+    <!--  <div class="col l4 offset-l2 s12">
+      <h5 class="white-text">Links</h5>
+      <ul>
+        <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+        <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+        <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+        <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+      </ul>
+    </div> -->
+  </div>
+</div>
+<div class="footer-copyright">
+<div class="container">
+  <div class="left offset-s2">
+    © 2017 Pakistani Consulate - Created by Ali Shaikh
+  </div>
+  <div class="right">
+  <a href="{{url_for('view_applications')}}" class="blue-text text-lighten-4">Admin Dashboard</a>
+  </div>
+  </div>
+</div>
+</footer>
+
+{% endblock %}

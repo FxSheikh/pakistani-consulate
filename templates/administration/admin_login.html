@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+        
+{% block content %}
+        <main>
+        <div class="container center-align give-margin">
+            
+            <h5 class="indigo-text">Log in to your administration account</h5>
+              
+            <div class="custom-box z-depth-1 grey lighten-4 row left-align">
+    
+                <form class="col s12" method="post" action="{{ url_for('login') }}" role="form">
+    
+                    {{ form.hidden_tag() }}
+                    
+                    <div class='row'>
+                        <div class='input-field col s12'>
+                            {{ form.email(class_='validate') }}
+                            {{ form.email.label }}
+                            
+                            {% if form.email.errors %}
+                            <ul class="errors">{% for error in form.email.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                            {% endif %}
+                            
+                      </div>
+                    </div>
+
+                    <div class='row'>
+                        <div class='input-field col s12'>
+                            {{ form.password(class_='validate') }}
+                            {{ form.password.label }}
+                            
+                            {% if form.password.errors %}
+                            <ul class="errors">{% for error in form.password.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                            {% endif %}                            
+                            
+                        </div>
+                        <label style='float: right;'>
+        				    <a class='pink-text' href='#!'><b>Forgot Password?</b></a>
+        				</label>
+                    </div>
+    
+                  <br />
+             
+                 <div class="row center">
+                      <button class="btn waves-effect waves-light" type="submit" name="login_button">Login
+                        <i class="material-icons right">send</i>
+                      </button>
+                  </div>
+              
+                </form>
+          
+            </div>
+
+            {%if error %}
+                <div class="errors">{{ error }}</div>
+            {% endif %}
+            
+             <div class="row center">
+                   <a href="{{ url_for('register') }}">Create account</a>
+              </div>
+        
+        </div>
+        </main>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script>
+    /* global $ */
+        $(document).ready(function() {
+        $('select').material_select();
+      });
+    </script>
+{% endblock %}

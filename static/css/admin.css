@@ -1,0 +1,50 @@
+  header, footer {
+      padding-left: 300px;
+    }
+
+main {
+  padding-left: 100px;
+}
+    
+
+    @media only screen and (max-width : 992px) {
+      header, main, footer {
+        padding-left: 0;
+      }
+    }
+          
+
+.side-nav {
+	background-color: #37474F;
+	color: white;
+}
+
+.side-nav li > a {
+	color: white;
+	font-weight: 400;
+	font-size: 15px;
+	background-color: #37474F;
+}
+.side-nav .collapsible-body:hover {
+  background-color: #263238;
+}
+
+.divider {
+  height: 1px;
+  background-color: #263238;
+}
+
+.side-header {
+  background-color: #455A64;
+  font-size: 20px;
+}
+
+main {
+  background-color: #ECEFF1;
+}
+
+.give-spacing {
+   margin-left: auto;
+  margin-right: auto;
+  padding: 32px 48px 0px 48px;
+}

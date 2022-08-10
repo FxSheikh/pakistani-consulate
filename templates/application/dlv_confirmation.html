@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block title %}View Applications{% endblock %}
+
+{% block content %}
+{% include '_flashmessages.html' %}
+<main>
+ <div class="section"></div>
+<div class="container z-depth-1">
+<ul class="tabs">
+        <li class="tab col s3"><a target="_self" href="{{url_for('dl_application')}}">Enter details</a></li>
+        <li class="tab col s3"><a target="_self" href="{{url_for('upload')}}">Upload Files</a></li>
+        <li class="tab col s3"><a target="_self" href="{{url_for('payment_details')}}">Payment</a></li>
+        <li class="tab col s3 disabled"><a class="active" href="#">Confirmation</a></li>
+
+      </ul> 
+
+  <ul class="collection z-depth-1 grey lighten-4">
+    <h3 class="center">Confirm your information</h3>
+
+
+    <h4 class="center-align">Application for Driving License Verification of {{ x.first_name }} {{ x.last_name }}</h4>
+
+    <ul class="collection z-depth-1 grey lighten-4">
+          <li class="collection-item"><strong>CNIC/NICOP Number:</strong>{{ x.cnic_number}}</li>
+
+      <li class="collection-item"><strong>Full Name: </strong>{{ x.first_name }} {{ x.middle_name }} {{ x.last_name }}</li>
+
+      <li class="collection-item"><strong>Father's Name: </strong>{{ x.fathers_name }}</li>
+            <li class="collection-item"><strong>Email: </strong>{{ x.email }}</li>
+
+            <li class="collection-item"><strong>Phone Number: </strong>{{ x.phone_number }}</li>
+      <li class="collection-item"><strong>Date of Birth: </strong>{{ x.date_of_birth }}</li>
+
+      <li class="collection-item"><strong>Place of Birth: </strong> {{ x.place_of_birth }}</li>
+     <li class="collection-item"><strong>Address in Pakistan: </strong>{{ x.pak_house_number }} {{ x. pak_street }}  {{x.pak_suburb}} {{x.pak_zipcode}} {{x.pak_state}} </li>
+      <li class="collection-item"><strong>Address in Australia: </strong>{{x.aus_house_number}} {{x. aus_street}} {{x.aus_suburb}} {{x.aus_zipcode}} {{x.aus_state}}</li>
+      <li class="collection-item"><strong>License Issuing Authority: </strong>{{ x.license_issuing_authority}}</li>
+
+      <li class="collection-item"><strong>Pakistani Driving License Number: </strong>{{ x.pak_license_number}}</li>
+            <li class="collection-item"><strong>Pakistani Driving License Issue Date: </strong>{{ x.pak_license_issue_date}}</li>
+
+      <li class="collection-item"><strong>Pakistani Driving License Expiry Date: </strong>{{ x.expiry_date_pakdl}}</li>
+      <li class="collection-item"><strong>Australian Driving License Number: </strong>{{ x.aus_license_number}}</li>
+
+
+      <li class="collection-item"><strong>Passport Number: </strong>{{ x.passport_number}}</li>
+
+
+
+      <li class="collection-item"><strong>Current Photo: </strong>
+        {{x.current_photo}}
+
+      </li>
+
+      <li class="collection-item"><strong>Drivers License Photo: </strong>
+        {{x.driving_license}}
+
+      </li>
+
+      <li class="collection-item"><strong>Passport Photo: </strong>
+       {{x.passport_copy}}
+
+      </li>
+
+      <li class="collection-item"><strong>NOC Photo: </strong>
+           {{x.noc_pakistan}}
+
+          </li>
+
+    </ul>
+    <div class="section"></div>
+    <div class="section"></div>
+    <div class="col s6 m6 grey lighten-3 z-depth-1 give-spacing">
+      <strong>I, {{ x.first_name }} {{x.middle_name}} {{ x.last_name }} s/o, d/o, w/o {{ x.fathers_name }} do hereby solemnly affirm and declare the following as per the requirements of the Statutory Declaration Act of 1959. <br> <br>
+      <ul>
+        <li>
+          i.      That I am the holder of a Driving License, issued by the competent authority in Pakistan as per the details given above (Part-A of the Application);
+        </li><li>
+
+        ii.     That the aforementioned license is genuine.</li><li>
+
+        iii.    That I hold a Pakistani Passport as per details given above (Part-A of the Application);</li><li>
+
+        iv.   That I hold a CNIC / NICOP which is genuine and valid (particulars mentioned in Part-A of the Application);</li><li>
+
+        v.     That my Australian Driving License is genuine and valid (particulars mentioned in Part-A of the Application);</li>
+
+        </ul>
+        <br>
+          I understand that if I intentionally make a false statement in a statutory declaration I will be guilty of an offence under section 11 of the Statutory Declarations Act 1959, and I believe that the statements in this declaration are true in every particular.
+      </strong>
+        </div>
+        <div class="section"></div>
+
+        <div class="row center">
+          <a class="btn waves-effect waves-light" href="{{ url_for('submit_application') }}">Submit Application</a>
+          <a class="btn waves-effect waves-light" href="{{ url_for('dl_application') }}">Edit Application</a>
+
+        </div>
+
+
+
+
+      </div>
+
+
+
+    </div>
+</main>
+    {% endblock %}

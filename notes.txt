@@ -1,0 +1,30 @@
+Step 1: Always activate the virtual environment
+First change to flask project directory
+
+Then activate the virtual environment:
+source venv/bin/activate
+
+To run our app, in the bash terminal type:
+python manage.py runserver
+
+To view the app in the browser, click the share button and then open the link that is next to application
+
+To quit the application, press ctrl+c in the bash terminal
+
+To deactivate the virtual envionrment:
+deactivate
+
+That's all there is to it :)
+
+To access db do the following in virtual envionrment:
+mysql-ctl cli
+
+Database has created, in mysql command line type:
+show databases;
+
+To end db:
+Ctrl+D
+
+To test the application in the bash terminal type:
+python tests.py
+

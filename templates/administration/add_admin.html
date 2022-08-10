@@ -1,0 +1,83 @@
+{% extends "admin_base.html" %}
+{% block title %}Register Form{% endblock %}
+        
+{% block content %}
+<main>
+        {% include '_flashmessages.html' %}
+
+        <h5 class="indigo-text center">Add An Administrator</h5>
+        
+        <div class="z-depth-1 grey lighten-4 row container give-spacing">
+
+            <div class="row">
+             
+            {% from "_formhelpers.html" import render_row %}
+            {% from "_formhelpers.html" import render_double_row %}
+
+            <form class="col s12" method="post" action="{{ url_for('add_administrator') }}" role="form">
+                
+                {{ form.hidden_tag() }}
+                
+                {{ render_double_row(form.first_name, form.middle_name) }}
+                
+                {{ render_row(form.last_name, "s12") }}
+                
+                {{ render_row(form.email, "s12") }}
+                
+                {%if emailerror %}
+                    <div class="register-errors">{{ emailerror }}</div>
+                {% endif %}
+                
+                {{ render_row(form.phone_number, "s12") }}
+ 
+                {{ render_double_row(form.password, form.password_confirm) }}
+
+                <div class="input-field col s12">
+                            {{ form.csrf_token }}
+                            {{ form.admin_type(size=30)}}
+                            <label>Administrational Role</label>
+
+                        </div>
+
+                <div class="row center">
+                    <button class="btn waves-effect waves-light" type="submit" name="register">Register
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+
+                {%if error %}
+                    <div class="errors">{{ error }}</div>
+                {% endif %}
+        
+
+            </form>
+            
+            </div>
+        </div>
+        
+         </main>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+ 
+    <script type="text/javascript" src="{{ url_for('static', filename='js/datepicker.js') }}"></script>
+    
+    <script>
+    /* global $ */
+   
+    $(document).ready(function(){
+        
+        $('input').bind('input',function(){ 
+            $(this).siblings( ".errors" ).remove();
+        });
+
+        $('#email').bind('input',function(){ 
+            $('.register-errors').remove();
+        });
+        
+    });
+    
+    </script>
+{% endblock %}
+

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}DLV Introduction{% endblock %}
+        
+{% block content %}
+        {% include '_flashmessages.html' %}
+
+        <div class="container">
+   
+        <h3 class="center">Verify your driving license</h3>
+        <div class="row">
+           <p>Please have the following items ready before applying.</p>
+            <ul class="collection">
+        <li class="collection-item">1. Original Drivers License</li>
+        <li class="collection-item">2. Original Passport</li>
+        <li class="collection-item">3. Current photograph</li>
+        <li class="collection-item">4. Valid credit card for payment</li>
+                <li class="collection-item">5. Original NOC from licensing authority (if your driving license is not verifiable online)</li>
+
+          </ul>
+           
+<!--            <p>Select an option:</p>
+ -->           <br>
+           <div class="row">
+               <div class="col s12 center">
+                    <a class="waves-effect waves-light btn" href="{{url_for('dl_application')}}"><i class="material-icons right">play_arrow</i>Start New Application</a>
+               </div>
+               
+           </div>
+
+            
+        </div>
+        
+         </div>
+        
+     
+{% endblock %}

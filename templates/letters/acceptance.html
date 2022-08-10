@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" type="text/css" media="print" href="{{url_for('static', filename='css/print.css')}}" />
+
+    <title>Approval Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body{
+            font-family: sans-serif;
+        }   
+        table {
+        border-collapse: collapse;
+    }
+    </style>
+</head>
+<body>
+    <div style="width:1143px; margin:0px auto;">
+        <div>
+    <div style="float:left;margin-top: 10px;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrAZF4G4gh9I2kJvwZ_gCk8gsXh8yBfnE4t8hH4REJ5uqhJCGhkQ" width="100" height="100"></div>
+    <center style="position: relative;
+    top: 25px;">
+            <h4 style="text-align:center;color:#006600">Consulate General of Pakistan&nbsp; </h4>
+            <h4 style="text-align:center;font-weight:100;color:#006600">Level 3, 109 Pitt Street, Sydney, NSW 2000 <br>
+                (G.P.O BOX 5256, Sydney 2000)
+                <br>
+                Tel: +61-2-9220 5600, Fax: +61-2-9223-0140
+                <br>E:&nbsp;<a href="javascript:void(0)">cg@pakconsulate.org.au;</a> W:&nbsp;<a href="http://pakconsulate.org.au/">pakconsulate.org.au</a>&nbsp;
+            </h4>
+                    
+    </center>
+</div>
+</div>
+<div style="clear:both"></div>
+<div style="width:1143px; margin:0px auto;">
+    <div style="margin-top:16px;">
+    <div style="float:left">
+            <p><b>No. CF/2007/13-DL</b></p>
+    </div>
+    <div style="float:right">
+            <p style="padding-right:40px">Dated: {{date}}</p>
+    </div>
+<div style="clear:both"></div>
+<br>
+
+
+<p>Serial No. {{app.id }}</p>
+<br>
+
+<h4><b>THE DOCUMENT VERIFICATION AND INVESTIGATIONS</b></h4>
+<br>
+<h4 style="font-weight:100;text-decoration:underline">(NSW)</h4>
+<br>
+<p>
+        This is to confirm that <strong>{{app.first_name}} {{app.middle_name}} {{app.last_name}} </strong> is a holder of a driver license issued from Pakistan as per following details: </p>
+        <div style="width:900px; margin:0px auto;">
+            <br>
+            <br>
+
+            <div style="width:50% ;float:left;">
+                <p>Date of Birth</p>
+                <br>
+                <p>Pakistani Passport Number</p>
+                <br>
+                <p>Pakistani Driving License Number</p>
+                <br>
+                <p>Issue date</p>
+                <br>
+                <p>Expiry date</p>
+                <br>
+                <p>Issued from</p>
+            </div>
+            <div style="width:50% ;float:right;"> 
+                    
+                    <p>:&nbsp;&nbsp;   
+                     {{ app.date_of_birth }}       
+                            </p>
+                    <br>
+                    <p>:&nbsp;&nbsp;   
+                            {{ app.passport_number }} </p>
+                    <br>
+                    <p>:&nbsp;&nbsp;   
+                            {{ app.pak_license_number }}</p>
+                    <br>
+                    <p>:&nbsp;&nbsp;   
+                            {{app.pak_license_issue_date}}</p>
+                    <br>
+                    <p>:&nbsp;&nbsp;   
+                            {{app.expiry_date_pakdl}}</p>
+                    <br>
+                    <p>:&nbsp;&nbsp;   
+                            Consulate General of Pakistan, Sydney</p>
+                   
+
+</div>
+<div style="clear:both"></div>
+<br>
+<br>
+<br>
+<div style="float:right">
+                    
+                    
+                    <p style="text-align:center">
+                            Test {{user.first_name}} {{user.middle_name}} {{user.last_name}}
+                            <br>
+                            {% if user.admin_type == 'CG' %}
+                            Consul General
+                            {% elif user.admin_type == 'CO' %}
+                            Consular Officer
+                            {% endif %}
+                    </p>
+                  
+                </div>
+				<div style="clear:both"></div>
+                 </div>
+                 <br>
+                 <br>
+                 <br>
+                 <p>Copy forwarded to:</p>   
+                 <br>
+<p><b>THE DOCUMENT VERIFICATION AND INVESTIGATION,</b></p>  
+<p style="text-decoration:underline">Sydney, NSW 2000</p>         
+                               
+              
+                                       
+       </div>
+       
+
+</div>
+ <a href="{{url_for('get_app', application_id=app.id)}}" class="btn" style="font-size:32px; margin: 0 auto; text-align:center;">Return to Application</a>
+
+<br>
+<br>
+<script>
+window.print();  
+
+</script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" media="print" href="{{url_for('static', filename='css/print.css')}}" />
+
+    <title>Rejection Document</title>
+    <style>
+            *{
+                margin: 0px;
+                padding: 0px;
+            }
+            body{
+                font-family: sans-serif;
+            }   
+            table {
+            border-collapse: collapse;
+        }
+        </style>
+</head>
+<body>
+        <div style="width:1143px; margin:0px auto;">
+                <div>
+            <div style="float:left;margin-top: 10px;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrAZF4G4gh9I2kJvwZ_gCk8gsXh8yBfnE4t8hH4REJ5uqhJCGhkQ" width="100" height="100"></div>
+            <center style="position: relative;
+            top: 25px;">
+                    <h4 style="text-align:center;color:#006600">Consulate General of Pakistan&nbsp; </h4>
+                    <h4 style="text-align:center;font-weight:100;color:#006600">Level 3, 109 Pitt Street, Sydney, NSW 2000 <br>
+                        (G.P.O BOX 5256, Sydney 2000)
+                        <br>
+                        Tel: +61-2-9220 5600, Fax: +61-2-9223-0140
+                        <br>E:&nbsp;<a href="javascript:void(0)">cg@pakconsulate.org.au;</a> W:&nbsp;<a href="http://pakconsulate.org.au/">pakconsulate.org.au</a>&nbsp;
+                    </h4>
+                            
+            </center>
+        </div>
+        </div>
+        <div style="clear:both"></div>
+        <div style="width:1143px; margin:0px auto;">
+                <div style="margin-top:16px;">
+                <div style="float:left">
+                        <p><b>No. CF/2007/13-DL</b></p>
+                </div>
+                <div style="float:right">
+                        <p>Dated: {{date}}</p>
+                </div>
+            <div style="clear:both"></div>
+            <br>
+         
+            
+            <p>Serial No. {{app.id}}</p>
+            <br>
+
+            <h4><b>{{app.first_name}} {{app.middle_name}} {{app.last_name}} </b></h4>
+            <br>
+            <h4 style="font-weight:100;text-decoration:underline">(NSW)</h4>
+            <br>
+            <br>
+           
+            <p>It is regretted to note that the particulars of the Pakistani Driving License of the applicant namely, <b>{{app.first_name}} {{app.middle_name}} {{app.last_name}}</b> cannot be verified as per following details: </p>
+                   </div>
+                   <br>
+                   <br>
+                   <table>
+                        <tbody>
+                            <tr>
+                            <th style="padding:5px ;border-right:1px solid #ddd; border-top:1px solid #ddd;font-size: 13px;border-top:1px solid #ddd;border-bottom:1px solid #ddd
+                            ;border-left:1px solid #ddd">S#</th>    
+                            <th style="padding:5px ;border-right:1px solid #ddd; border-top:1px solid #ddd;font-size: 13px; width: 26%;border-top:1px solid #ddd;border-bottom:1px solid #ddd
+                            ;border-left:1px solid #ddd;text-align:left">Particulars</th>
+                            <th style="padding:5px ;border-right:1px solid #ddd; border-top:1px solid #ddd;font-size: 13px; width: 84%;border-top:1px solid #ddd;border-bottom:1px solid #ddd
+                            ;border-left:1px solid #ddd;text-align:left">Details</th>
+                        </tr>
+                        <tr>
+                                <td style="padding:5px ;border-right:1px solid #ddd; border-top:1px solid #ddd;font-size: 13px;border-top:1px solid #ddd;border-bottom:1px solid #ddd
+                                ;border-left:1px solid #ddd">1</td>    
+                                <td style="padding:5px ;border-right:1px solid #ddd; border-top:1px solid #ddd;font-size: 13px; width: 20%;border-top:1px solid #ddd;border-bottom:1px solid #ddd
+                                ;border-left:1px solid #ddd">Date of Birth</td>
+                                <td style="padding:5px ;border-right:1px solid #ddd; border-top:1px solid #ddd;font-size: 13px; width: 84%;border-top:1px solid #ddd;border-bottom:1px solid #ddd
+                                ;border-left:1px solid #ddd;text-align:left">{{app.date_of_birth}}</td>
+                            </tr>
+                            <tr>
+                                    <td style="padding:5px ;border-right:1px solid #ddd; border-top:1px solid #ddd;font-size: 13px; border-top:1px solid #ddd;border-bottom:1px solid #ddd
+                                    ;border-left:1px solid #ddd">2</td>    
+                                    <td style="padding:5px ;border-right:1px solid #ddd; border-top:1px solid #ddd;font-size: 13px; width: 20%;border-top:1px solid #ddd;border-bottom:1px solid #ddd
+                                    ;border-left:1px solid #ddd">Pakistani Passport Number</td>
+                                    <td style="padding:5px ;border-right:1px solid #ddd; border-top:1px solid #ddd;font-size: 13px; width: 84%;border-top:1px solid #ddd;border-bottom:1px solid #ddd
+                                    ;border-left:1px solid #ddd;text-align:left">{{app.passport_number}}</td>
+                                </tr>
+                                <tr>
+                                        <td style="padding:5px ;border-right:1px solid #ddd; border-top:1px solid #ddd;font-size: 13px; border-top:1px solid #ddd;border-bottom:1px solid #ddd
+                                        ;border-left:1px solid #ddd">3</td>    
+                                        <td style="padding:5px ;border-right:1px solid #ddd; border-top:1px solid #ddd;font-size: 13px; width: 20%;border-top:1px solid #ddd;border-bottom:1px solid #ddd
+                                        ;border-left:1px solid #ddd">Pakistani Driving License Number</td>
+                                        <td style="padding:5px ;border-right:1px solid #ddd; border-top:1px solid #ddd;font-size: 13px; width: 84%;border-top:1px solid #ddd;border-bottom:1px solid #ddd
+                                        ;border-left:1px solid #ddd;text-align:left">{{app.pak_license_number}}</td>
+                                    </tr>
+                                 
+                                        <tr>
+                                                <td style="padding:5px ;border-right:1px solid #ddd; border-top:1px solid #ddd;font-size: 13px; border-top:1px solid #ddd;border-bottom:1px solid #ddd
+                                                ;border-left:1px solid #ddd">4</td>    
+                                                <td style="padding:5px ;border-right:1px solid #ddd; border-top:1px solid #ddd;font-size: 13px; width: 20%;border-top:1px solid #ddd;border-bottom:1px solid #ddd
+                                                ;border-left:1px solid #ddd">Issue date</td>
+                                                <td style="padding:5px ;border-right:1px solid #ddd; border-top:1px solid #ddd;font-size: 13px; width: 84%;border-top:1px solid #ddd;border-bottom:1px solid #ddd
+                                                ;border-left:1px solid #ddd;text-align:left">{{app.pak_license_issue_date}}</td>
+                                            </tr>
+                                            <tr>
+                                                    <td style="padding:5px ;border-right:1px solid #ddd; border-top:1px solid #ddd;font-size: 13px; border-top:1px solid #ddd;border-bottom:1px solid #ddd
+                                                    ;border-left:1px solid #ddd">5</td>    
+                                                    <td style="padding:5px ;border-right:1px solid #ddd; border-top:1px solid #ddd;font-size: 13px; width: 20%;border-top:1px solid #ddd;border-bottom:1px solid #ddd
+                                                    ;border-left:1px solid #ddd">Expiry date</td>
+                                                    <td style="padding:5px ;border-right:1px solid #ddd; border-top:1px solid #ddd;font-size: 13px; width: 84%;border-top:1px solid #ddd;border-bottom:1px solid #ddd
+                                                    ;border-left:1px solid #ddd;text-align:left">{{app.expiry_date_pakdl}}</td>
+                                                </tr>
+
+                                           <!--      <tr>
+                                                        <td style="padding:5px ;border-right:1px solid #ddd; border-top:1px solid #ddd;font-size: 13px; border-top:1px solid #ddd;border-bottom:1px solid #ddd
+                                                        ;border-left:1px solid #ddd">7</td>    
+                                                        <td style="padding:5px ;border-right:1px solid #ddd; border-top:1px solid #ddd;font-size: 13px; width: 20%;border-top:1px solid #ddd;border-bottom:1px solid #ddd
+                                                        ;border-left:1px solid #ddd">Issued from</td>
+                                                        <td style="padding:5px ;border-right:1px solid #ddd; border-top:1px solid #ddd;font-size: 13px; width: 84%;border-top:1px solid #ddd;border-bottom:1px solid #ddd
+                                                        ;border-left:1px solid #ddd;text-align:left">Sanghar, Pakistan</td>
+                                                    </tr> -->
+                                                    <tr>
+                                                            <td style="padding:5px ;border-right:1px solid #ddd; border-top:1px solid #ddd;font-size: 13px;border-top:1px solid #ddd;border-bottom:1px solid #ddd
+                                                            ;border-left:1px solid #ddd">6</td>    
+                                                            <td style="padding:5px ;border-right:1px solid #ddd; border-top:1px solid #ddd;font-size: 13px; width: 20%;border-top:1px solid #ddd;border-bottom:1px solid #ddd
+                                                            ;border-left:1px solid #ddd">Reason for non-verification</td>
+                                                            <td style="padding:5px ;border-right:1px solid #ddd; border-top:1px solid #ddd;font-size: 13px; width: 84%;border-top:1px solid #ddd;border-bottom:1px solid #ddd
+                                                            ;border-left:1px solid #ddd;text-align:left">{{app.remarks}}</td>
+                                                        </tr>
+                    </tbody>
+                </table>
+                <div style="float:right">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                   
+
+                    <p style="text-align:center">
+                            (ABDUL MAJID YOUSFANI)
+                            <br>
+                            Consul General
+                    </p>
+                  
+                </div>
+                <div style="clear:both"></div>
+                <br>
+                <br>
+                <br>
+
+                <p>Copy forwarded to:</p>
+                <br>
+                <p><b>THE DOCUMENT VERIFICATION AND INVESTIGATION,</b>
+                </p>
+                <p style="text-decoration:underline">Sydney, NSW 2000</p>
+                
+                
+            </div>
+             <a href="{{url_for('get_app', application_id=app.id)}}" class="btn" style="font-size:32px; margin: 0 auto; text-align:center;">Return to Application</a>
+
+			<br>
+			<br>
+            <script>window.print(); </script>
+</body>
+</html>

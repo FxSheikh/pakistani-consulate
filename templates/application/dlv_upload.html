@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{% block title %}Upload Documents{% endblock %}
+
+<h4 class="center">Upload Required Documents</h4>
+
+
+{% block content %}
+{% include '_flashmessages.html' %}
+
+
+<div class="section"></div>
+<div class="container z-depth-1">
+  <ul class="tabs">
+    <li class="tab col s3"><a target="_self" href="{{url_for('dl_application')}}">Enter details</a></li>
+    <li class="tab col s3 disabled"><a class="active" href="#"><strong>Upload Files</strong></a></li>
+    <li class="tab col s3 disabled"><a href="#">Payment</a></li>
+  </ul>
+  <div class="divider">
+  </div>
+
+  <br>
+
+  <h3 class="center">Upload Required Documents</h3>
+
+  <br>
+  <div class="row">
+    <div class="col s12">
+      <p>Make sure you upload documents in a valid format (jpeg/png). Any other format will be rejected. </p>
+      <p>We require the following documents to be uploaded:</p>
+      <ul class="collection">
+        <li class="collection-item">1. Current photograph</li>                
+        <li class="collection-item">2. Original Drivers License</li>
+        <li class="collection-item">3. Original Passport</li>
+        <li class="collection-item">4. NOC from Pakistan (OPTIONAL)</li>
+      </ul>
+        <strong> Note: If you are editing your application, please re-upload files. </strong>
+
+    </div>
+  </div>
+
+
+  {% from "_formhelpers.html" import render_upload %}
+
+
+  <div class="center-box z-depth-2 hoverable">
+
+
+    <form method="POST" enctype="multipart/form-data" action="{{ url_for('upload', application_id=application_id) }}">
+
+
+      {{ form.hidden_tag() }}
+
+      <div class='row center'>
+        <div class="input-field col s12">
+
+
+          <div class="file-field input-field">
+
+            <div class="btn">
+              <span>File</span>
+              <input type="file">
+              {{ form.current_photo(class_='validate') }}
+
+              {% if form.current_photo.errors %}
+              <ul class="errors">{% for error in form.current_photo.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+              {% endif %}
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text" placeholder="Upload current photograph here">
+              
+            </div>
+          </div>
+
+          <div class="file-field input-field">
+
+            <div class="btn">
+              <span>File</span>
+              <input type="file">
+              {{ form.current_dl(class_='validate') }}
+
+              {% if form.current_dl.errors %}
+              <ul class="errors">{% for error in form.current_dl.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+              {% endif %}
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text" placeholder="Upload original drivers license here">
+              
+            </div>
+          </div>
+
+          <div class="file-field input-field">
+
+            <div class="btn">
+              <span>File</span>
+              <input type="file">
+              {{ form.current_passport(class_='validate') }}
+
+              {% if form.current_passport.errors %}
+              <ul class="errors">{% for error in form.current_passport.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+              {% endif %}
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text" placeholder="Upload original passport here">
+
+
+            </div>
+          </div>
+
+           <div class="file-field input-field">
+
+            <div class="btn">
+              <span>File</span>
+              <input type="file">
+              {{ form.current_noc(class_='validate') }}
+
+              {% if form.current_noc.errors %}
+              <ul class="errors">{% for error in form.current_noc.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+              {% endif %}
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text" placeholder="Upload original NOC here (OPTIONAL)">
+
+
+            </div>
+          </div>
+          
+        </div>
+      </div>
+  
+
+      <div class="row center">
+        <button class="btn waves-effect waves-light" type="submit" value="add" name="nextbutton">Next</button>
+      </div>
+
+      {%if error %}
+      <div class="errors">{{ error }}</div>
+      {% endif %}
+
+    </form>
+
+  </div>
+
+<div class="section"></div>
+
+</div>
+<div class="section">
+</div>
+</div>  
+</div>
+
+
+
+{% endblock %}
+
+

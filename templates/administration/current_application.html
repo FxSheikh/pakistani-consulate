@@ -1,0 +1,205 @@
+{% extends "admin_base.html" %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<main>
+
+	<div class="section"></div>
+	<div class="container">
+			{% include '_flashmessages.html' %}
+
+	</div>
+	<div class="container">
+		<a class="waves-effect waves-light btn" href="{{url_for('view_applications')}}"><i class="material-icons left">arrow_back</i>Go back</a>
+
+		<div class="col s12 m12 l12">
+       <div class="card-panel">
+        <span class=" text-darken-2 info-header"><h4 class="center">Driver License Application</h4>
+        		{% for x in applicant %}
+
+		<h5 class="center-align">Application for {{ x.first_name }} {{ x.last_name }}</h5>
+
+        </span>
+      </div>
+    </div> 
+		
+
+	<div class="col s12 m12 l12">
+       <div class="card-panel">
+        <span class=" text-darken-2 info-header"><h4 class="center">General Information</h4>
+
+		<ul class="collection">
+					<li class="collection-item"><strong>Current Photo</strong>
+						<img class="materialboxed" width="250" src="{{url_for('static', filename='documents/photos/')}}{{x.current_photo}}">
+
+					</li>
+					<li class="collection-item"><strong>Full Name </strong>{{ x.first_name }} {{ x.middle_name }} {{ x.last_name }}</li>
+					<li class="collection-item"><strong>Application Status </strong>{{ x.pending_status }}</li>
+					<li class="collection-item"><strong>Email </strong>{{ x.email }}</li>
+					<li class="collection-item"><strong>Phone Number </strong>{{ x.phone_number }}</li>
+
+					<li class="collection-item"><strong>Father's Name </strong>{{ x.fathers_name }}</li>
+					<li class="collection-item"><strong>Place of Birth </strong> {{ x.place_of_birth }}</li>
+					<li class="collection-item"><strong>Date of Birth </strong>{{ x.date_of_birth }}</li>
+					 <li class="collection-item"><strong>Address in Pakistan </strong>{{ x.pak_house_number }} {{ x. pak_street }}  {{x.pak_suburb}} {{x.pak_zipcode}} {{x.pak_state}} </li>
+      <li class="collection-item"><strong>Address in Australia </strong>{{x.aus_house_number}} {{x. aus_street}} {{x.aus_suburb}} {{x.aus_zipcode}} {{x.aus_state}}</li>
+					<li class="collection-item"><strong>License Issuing Authority </strong>{{ x.license_issuing_authority}}</li>
+
+					<li class="collection-item"><strong>Pakistani Driving License Number </strong>{{ x.pak_license_number}}</li>
+					<li class="collection-item"><strong>Pakistani Driving License Expiry Date </strong>{{ x.expiry_date_pakdl}}</li>
+					<li class="collection-item"><strong>Pakistani Driving License Issuing Date </strong>{{ x.pak_license_issue_date}}</li>
+
+					<li class="collection-item"><strong>Australian Driving License Number </strong>{{ x.aus_license_number}}</li>
+					<li class="collection-item"><strong>Passport Number </strong>{{ x.passport_number}}</li>
+					<li class="collection-item"><strong>CNIC/NICOP Number</strong>{{ x.cnic_number}}</li>
+				</ul>
+
+        </span>
+      </div>
+    </div> 
+
+  
+			
+				<div class="col s12 m12 l12">
+				<div class="card-panel">
+				        <span class=" text-darken-2 info-header"><h4 class="center">Photos</h4>
+
+				<ul class="collection">
+
+					<li class="collection-item"><strong>Current Photo</strong>
+						<img class="materialboxed" width="250" src="{{url_for('static', filename='documents/photos/')}}{{x.current_photo}}">
+
+					</li>
+				
+
+					<li class="collection-item"><strong>Drivers License Photo</strong>
+						<img class="materialboxed" width="250" src="{{url_for('static', filename='documents/licenses/')}}{{x.driving_license}}">
+
+					</li>
+
+					<li class="collection-item"><strong>Passport Photo</strong>
+						<img class="materialboxed" width="250" src="{{url_for('static', filename='documents/passports/')}}{{x.passport_copy}}">
+
+					</li>
+
+					<li class="collection-item"><strong>NOC Photo</strong>
+						<img class="materialboxed" width="250" src="{{url_for('static', filename='documents/nocs/')}}{{x.noc_pakistan}}">
+
+					</li>
+
+				</ul></div>
+				</div>
+
+			
+				<div class="col s12 m12 l12">
+				<div class="card-panel">
+							        <span class=" text-darken-2 info-header"><h4 class="center">Payment</h4></span>
+
+			<ul class="collection">
+					{% if x.payment_type != None %}
+
+					<li class="collection-item"><strong>Payment Type</strong>
+					 {{x.payment_type}} 
+
+					 </li>
+					 {% endif %}
+
+					 {% if x.amount != None %}
+					<li class="collection-item"><strong>Amount</strong> {{x.amount}} </li>
+					{% endif %}
+
+					{% if x.issuing_bank_branch != None %}
+					<li class="collection-item"><strong>Issuing Bank Branch</strong> {{x.issuing_bank_branch}} </li>
+					{% endif %}
+
+					{% if x.bank_cheque_no != None %}
+					<li class="collection-item"><strong>Bank Cheque No</strong> {{x.bank_cheque_no}} </li>
+					{% endif %}
+
+					{% if x.bank_order_no != None %}
+					<li class="collection-item"><strong>Bank Order No</strong> {{x.bank_order_no}} </li>
+					{% endif %}
+
+					{% if x.card_type != None %}
+					<li class="collection-item"><strong>Card Type</strong> {{x.card_type}} </li>
+					{% endif %}
+					{% if x.card_no != None %}
+					<li class="collection-item"><strong>Card Number</strong> {{x.card_no}} </li>
+					{% endif %}
+										{% if x.receipt_no != None %}
+
+					<li class="collection-item"><strong>Receipt Number</strong> {{x.receipt_no}} </li>
+					{% endif %}
+					{% if x.money_order_no != None %}
+
+					<li class="collection-item"><strong>Money Order Number</strong> {{x.money_order_no}} </li>
+					{% endif %}
+
+				</ul>
+     
+            </div>
+
+            </div>
+
+			 <div class="col s12 m12 l12">
+				<div class="card z-depth-1 ">
+					<div class="card-content">
+						<span class="card-title black-text">Current Remarks</span>
+						<span class="card-content black-text"> {{ x.remarks }} </span>
+
+
+					</div>
+				</div>
+			</div>
+
+			
+				<div class="col s12 m12 l12">
+       <div class="card-panel hoverable">
+        <span class=" text-darken-2 info-header"><h4 class="center">Update Application Status</h4></span>
+
+
+				<div class="container">
+					<form class="col s12" method="post" action="{{ url_for('change_status', application_id=x.id) }}" role="form">
+
+					{{ form.csrf_token }}
+					<div class="input-field col s12">
+        			{{ form.remarks(size=30,class='materialize-textarea') }} {{ form.remarks.label }}  
+        			</div>
+						<div class="input-field col s12">
+						    {{ form.pending_status(size=30, )}}        
+
+							<label>Update Application Status</label>
+						</div>
+
+
+						<div class="row center">
+ 	 						<button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+ 	 						{% if session.admin_type == 'CG' %} <a class="btn waves-effect waves-light" href="{{ url_for('delete_application', applicant_id=x.id) }}">Delete Application</a>
+ 	 						{% endif %}
+						</div>
+						<div class="section"></div>
+						{%if error %}
+						<div class="errors">{{ error }}</div>
+						{% endif %}
+
+					</form>
+				</div>
+				</div>
+				</div>
+		</div>
+		            </div>
+
+						{% endfor %}
+
+
+
+
+
+	</div>
+	<div class="section"></div>
+
+</main>
+
+
+{% endblock %}

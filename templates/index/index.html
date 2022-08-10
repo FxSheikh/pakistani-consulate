@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}DLV Introduction{% endblock %}
+
+{% block content %}
+{% include '_flashmessages.html' %}
+
+
+<div class="container">
+  <h3 class="center">Sydney Pakistani Consulate Verification System</h3>
+    <h5 class="center">Online Applications System is available for the following services.</h5>
+
+  <div class="row">
+
+			<div class="col s12 m4">
+				<a href="{{url_for('dl_information')}}"><div class="card green darken-1 hoverable z-depth-1 ">
+					<div class="card-content black-text">
+						<span class="card-title white-text">Driving License Verification</span>
+						
+
+
+					</div>
+				</div></a>
+			</div>
+			<div class="col s12 m4">
+				<div class="card green darken-1 hoverable z-depth-1 ">
+					<div class="card-content black-text">
+						<span class="card-title white-text">Visa Application</span>	
+
+					</div>
+				</div>
+			</div>
+
+			<div class="col s12 m4">
+				<div class="card green darken-1 hoverable z-depth-1 ">
+					<div class="card-content black-text">
+						<span class="card-title white-text">Birth Registration Of A Child</span>
+						
+						
+
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m12">
+			<a  href="{{url_for('user_applications')}}"><div class="card blue darken-1 hoverable z-depth-1">
+			<div class="card-content black-text">
+			<span class="card-title white-text center-align">View Your Applications</span>
+
+			</div>
+
+		</div></a>
+ 
+<div class="row center">
+</div>
+
+</div>
+
+       
+{% endblock %}

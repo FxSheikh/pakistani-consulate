@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}View Applications{% endblock %}
+
+{% block content %}
+{% include '_flashmessages.html' %}
+
+<div class="container">
+  <h3 class="center">View Existing Applications</h3>
+
+  <ul class="collapsible" data-collapsible="accordion">
+    {% for x in applicant %}
+
+    <li>
+      <div class="collapsible-header"><i class="material-icons">keyboard_arrow_down</i>Drivers License Application: <strong> {{ x.date_submitted }} </strong></div>
+      <div class="collapsible-body">
+       <h4 class="center-align">Application for {{ x.first_name }} {{ x.last_name }}</h4>
+       <ul class="collection">
+        <li class="collection-item"><strong>Full Name </strong>{{ x.first_name }} {{ x.middle_name }} {{ x.last_name }}</li>
+        <li class="collection-item"><strong>Email </strong>{{ x.email }}</li>  
+        <li class="collection-item"><strong>Pakistani Driving License Number </strong>{{ x.pak_license_number}}</li>
+        <li class="collection-item"><strong>Application Status </strong>{{ x.pending_status }}</li>
+
+            </ul>
+
+
+
+
+      {% endfor %}
+
+
+    </div>
+  </li>
+</ul>
+
+
+
+</div>
+
+{% endblock %}

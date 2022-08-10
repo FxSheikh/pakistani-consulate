@@ -1,0 +1,54 @@
+{% extends "admin_base.html" %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+
+<main>
+<div class="container">
+			{% include '_flashmessages.html' %}
+
+	</div>
+<div class="section"></div>
+	<div class="row">
+	<div class="container z-depth-2 grey lighten-4 give-spacing">
+
+		<h3 class="center">System Users</h3>
+		<table class="highlight">
+			<thead>
+				<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Phone Number</th>
+					<th>Email</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				{% for x in applicantList %}
+				<tr>
+					<td>{{x.first_name}}</td>
+					<td>{{x.last_name}}</td>
+					<td>{{x.phone_number}}</td>
+					<td>{{x.email}}</td>
+					<td><a href="{{ url_for('delete_applicant', applicant_id=x.id) }}">Delete</a> </td>
+				</tr>
+
+				{% endfor %}
+			</tbody>
+		</table>
+
+
+		<div class="section"></div>
+
+
+	</div>
+	</div>
+	<div class="section"></div>
+
+	
+</main>
+
+
+{% endblock %}

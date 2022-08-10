@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block title %}Application Form{% endblock %}
+        
+{% block content %}
+{% include '_flashmessages.html' %}
+
+        <main>
+        <div class="section"></div>
+        <div class="container z-depth-1">
+        <ul class="tabs">
+        <li class="tab col s3"><a target="_self" href="{{url_for('dl_application')}}">Enter details</a></li>
+        <li class="tab col s3"><a target="_self" href="{{url_for('upload')}}">Upload Files</a></li>
+        <li class="tab col s3 disabled"><a class="active" href="#">Payment</a></li>
+        <li class="tab col s3 disabled"><a href="#">Confirmation</a></li>
+
+      </ul>
+
+      <div class="divider">
+      </div>
+
+       
+        <div class="center-box z-depth-2 hoverable z-depth-1 grey lighten-4">
+                <h4 class="center">Application for Authentication of Pakistan Driving License</h4>
+
+
+             
+            {% from "_formhelpers.html" import render_row %}
+            {% from "_formhelpers.html" import render_double_row %}
+            {% from "_formhelpers.html" import render_date_row %}
+            {% from "_formhelpers.html" import render_datefield_row %}
+
+            
+            <form class="col s12" method="post" action="{{ url_for('payment_details') }}" role="form">
+                {{ form.hidden_tag() }}
+
+                {{render_row(form.payment_type, "s12 m12")}}
+                
+
+                <div class="row center">
+                    <button class="btn waves-effect waves-light" type="submit" name="nextbutton">Next</button>
+                </div>
+                <div class="section"></div>
+                {%if error %}
+                    <div class="errors">{{ error }}</div>
+                {% endif %}
+                
+            </form>
+            
+         </div>
+
+         </div>
+         <div class="section"></div>
+
+         </main>
+
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+ 
+    <script type="text/javascript" src="{{ url_for('static', filename='js/datepicker.js') }}"></script>
+    
+    <script>
+    /* global $ */
+   
+    $(document).ready(function(){
+        
+        $('input').bind('input',function(){ 
+            $(this).siblings( ".errors" ).remove();
+        });
+        
+        // $('input').focusin(function() {
+        //   $(this).siblings( ".errors" ).remove();
+        // });
+        
+        $('.datepicker').focusin(function() {
+          $(this).siblings( ".errors" ).remove();
+        });
+        
+    });
+    
+    </script>
+{% endblock %}
+
+

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Applicant Details{% endblock %}
+
+    <h4 class="center">Applicant Details</h4>
+
+
+{% block content %}
+
+
+
+    <div class="container">
+        
+            <div class="row">
+        
+                <h4> {{ applicant.email }} </h4>
+                
+                <h4> {{ applicant.first_name }} </h4>
+                
+                <h4> {{ applicant.middle_name }} </h4>
+
+                <h4> {{ applicant.last_name }} </h4>
+                
+                <!--<h4> Application ID = {{ application_id }} </h4>-->
+                
+            </div>    
+        
+    </div>
+
+{% endblock %}

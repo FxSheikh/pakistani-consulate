@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}DLV Introduction{% endblock %}
+
+{% block content %}
+
+<div class="container">
+	{% include '_flashmessages.html' %}
+
+	<h3 class="center">Application Successful</h3>
+	<h6 class="center">Your unique serial number is {{serial_num}}</h6>
+	<h6 class="center">Expect a response in your email within 2 weeks. You can also view your application status on the home page.</h6>
+	<ul class="collection z-depth-1 grey lighten-4">
+		<h3 class="center">Application Details</h3>
+
+
+		<h4 class="center-align">Application for Driving License Verification of {{ x.first_name }} {{ x.last_name }}</h4>
+
+    <ul class="collection z-depth-1 grey lighten-4">
+          <li class="collection-item"><strong>CNIC/NICOP Number:</strong>{{ x.cnic_number}}</li>
+
+      <li class="collection-item"><strong>Full Name: </strong>{{ x.first_name }} {{ x.middle_name }} {{ x.last_name }}</li>
+
+      <li class="collection-item"><strong>Father's Name: </strong>{{ x.fathers_name }}</li>
+            <li class="collection-item"><strong>Email: </strong>{{ x.email }}</li>
+
+            <li class="collection-item"><strong>Phone Number: </strong>{{ x.phone_number }}</li>
+      <li class="collection-item"><strong>Date of Birth: </strong>{{ x.date_of_birth }}</li>
+
+      <li class="collection-item"><strong>Place of Birth: </strong> {{ x.place_of_birth }}</li>
+     <li class="collection-item"><strong>Address in Pakistan: </strong>{{ x.pak_house_number }} {{ x. pak_street }}  {{x.pak_suburb}} {{x.pak_zipcode}} {{x.pak_state}} </li>
+      <li class="collection-item"><strong>Address in Australia: </strong>{{x.aus_house_number}} {{x. aus_street}} {{x.aus_suburb}} {{x.aus_zipcode}} {{x.aus_state}}</li>
+      <li class="collection-item"><strong>License Issuing Authority: </strong>{{ x.license_issuing_authority}}</li>
+
+      <li class="collection-item"><strong>Pakistani Driving License Number: </strong>{{ x.pak_license_number}}</li>
+            <li class="collection-item"><strong>Pakistani Driving License Issue Date: </strong>{{ x.pak_license_issue_date}}</li>
+
+      <li class="collection-item"><strong>Pakistani Driving License Expiry Date: </strong>{{ x.expiry_date_pakdl}}</li>
+      <li class="collection-item"><strong>Australian Driving License Number: </strong>{{ x.aus_license_number}}</li>
+
+
+      <li class="collection-item"><strong>Passport Number: </strong>{{ x.passport_number}}</li>
+
+
+
+      <li class="collection-item"><strong>Current Photo: </strong>
+        {{x.current_photo}}
+
+      </li>
+
+      <li class="collection-item"><strong>Drivers License Photo: </strong>
+        {{x.driving_license}}
+
+      </li>
+
+      <li class="collection-item"><strong>Passport Photo: </strong>
+       {{x.passport_copy}}
+
+      </li>
+
+      <li class="collection-item"><strong>NOC Photo: </strong>
+           {{x.noc_pakistan}}
+
+          </li>
+		</ul>
+		<div class="row center">
+			<a class="btn waves-effect waves-light" href="{{ url_for('index') }}">Return To Home</a>
+		</div>
+	</div>
+
+
+	{% endblock %}

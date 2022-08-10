@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}Register Form{% endblock %}
+        
+{% block content %}
+        {% include '_flashmessages.html' %}
+
+        <h5 class="indigo-text center">Create an account</h5>
+        
+        <div class="z-depth-1 grey lighten-4 row center-box">
+
+            <div class="row">
+             
+            {% from "_formhelpers.html" import render_row %}
+            {% from "_formhelpers.html" import render_double_row %}
+
+            <form class="col s12" method="post" action="{{ url_for('register') }}" role="form">
+                
+                {{ form.hidden_tag() }}
+                
+                {{ render_double_row(form.first_name, form.middle_name) }}
+                
+                {{ render_row(form.last_name, "s12") }}
+                
+                {{ render_row(form.email, "s12") }}
+                
+                {%if emailerror %}
+                    <div class="register-errors">{{ emailerror }}</div>
+                {% endif %}
+                
+                {{ render_row(form.phone_number, "s12") }}
+ 
+                {{ render_double_row(form.password, form.password_confirm) }}
+
+                <div class="row center">
+                    <button class="btn waves-effect waves-light" type="submit" name="register">Register
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+
+                {%if error %}
+                    <div class="errors">{{ error }}</div>
+                {% endif %}
+        
+                <p class="center">Already registered? <a href="{{ url_for('login')}}">Click here</a> to log in.</p>
+
+            </form>
+            
+            </div>
+        </div>
+        
+         
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+ 
+    <script type="text/javascript" src="{{ url_for('static', filename='js/datepicker.js') }}"></script>
+    
+    <script>
+    /* global $ */
+   
+    $(document).ready(function(){
+        
+        $('input').bind('input',function(){ 
+            $(this).siblings( ".errors" ).remove();
+        });
+
+        $('#email').bind('input',function(){ 
+            $('.register-errors').remove();
+        });
+        
+    });
+    
+    </script>
+{% endblock %}
+

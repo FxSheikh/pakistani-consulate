@@ -1,0 +1,72 @@
+{% macro render_field(field, columnsize) %}
+    <div class="input-field col {{ columnsize }}">
+        
+        {# safe prevents Jinja from automatically escaping #}
+        {{ field(**kwargs)|safe }}
+        {{ field.label }}
+        
+        {% if field.errors %}
+        
+        <ul class="errors">
+        
+        {% for error in field.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}            
+            
+        </ul>
+        {% endif %}
+    </div>
+{% endmacro %}
+
+
+{% macro render_row(field, columnsize) %}
+    <div class="row">
+        {{ render_field(field, columnsize, class='validate') }}
+    </div>
+{% endmacro %}   
+
+{% macro render_auto_row(field, columnsize, classvar) %}
+    <div class="row">
+        {% if classvar == "DateField" %}
+        {{ render_field(field, columnsize, class='datepicker') }}
+        {% else %}
+        {{ render_field(field, columnsize, class='validate') }}
+        {% endif %}
+    </div>
+{% endmacro %}   
+
+{% macro render_date(field, columnsize) %}
+    <div class="row">
+        {{ render_field(field, columnsize, class='datepicker') }}
+    </div>
+{% endmacro %}               
+
+
+{% macro render_double_row(field, field2) %}
+    <div class="row">
+        {{ render_field(field, "s12 m6", class='validate') }}
+        {{ render_field(field2, "s12 m6", class='validate') }}
+    </div>
+{% endmacro %}          
+
+
+{% macro render_datefield_row(field, field2) %}
+    <div class="row">
+        {{ render_field(field, "s12 m6", class='datepicker', value=field.data) }}        
+        {{ render_field(field2, "s12 m6", class='validate') }}
+    </div>
+{% endmacro %}    
+
+{% macro render_date_row(field, field2) %}
+    <div class="row">
+        {{ render_field(field, "s12 m6", class='datepicker', value=field.data) }}        
+        {{ render_field(field2, "s12 m6", class='datepicker', value=field2.data) }}
+    </div>
+{% endmacro %}     
+
+
+{% macro render_upload(field) %}
+    <div class="row">
+        {{ render_field(field, "s12 m6", class='validate', value=field.data) }}        
+    </div>
+{% endmacro %}  
